@@ -1,5 +1,26 @@
+#include<math.h>
 #include <stdio.h>
 #define MAX 3
+double d2(int a[3][3])//0(n) complexity determinant 
+{
+    int i,j,k;
+    double sum,p;
+    sum=0.0,j=1,k=MAX-1;
+    for(i=0;i<MAX;i++)
+    {
+        p=pow(-1.0,i);
+        if(i==MAX-1)
+        k=1;
+        sum+=(a[0][i]*((a[1][j]*a[2][k]-a[2][j]*a[1][k])))*p;
+        j=0;
+    }
+    return sum;
+}
+double d1(int a[3][3])//0(1) complexity determinant 
+{
+    int sum=a[0][0]*(a[1][1]*a[2][2]-a[2][1]*a[1][2])-a[0][1]*(a[1][0]*a[2][2]-a[2][0]*a[1][2])+a[0][2]*(a[1][0]*a[2][1]-a[2][0]*a[1][1]);
+    return sum;
+}
 void tran(int a[3][3],int b[3][3])
 {
     int i,j;
@@ -73,7 +94,7 @@ int main()
     enter(arr1);
     printf("enter elements for 2nd array\n");
     enter(arr2);
-    add(arr1,arr2,arr3);
+   add(arr1,arr2,arr3);
     mul(arr1,arr2,arr4);
     tran(arr1,arr5);
     printf("1st array is \n");
@@ -86,4 +107,10 @@ int main()
     display(arr4);
     printf("TRANSPOSE OF A MATIRIX IS\n");
     display(arr5);
+    double d=d2(arr1);
+    printf("determinant of array 1st is %f\n",d);
+    if(d==1)
+    printf("Given matrix is singular \n");
+    else
+    printf("Given martix is not singular matirx\n");
 }
