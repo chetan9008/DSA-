@@ -1,5 +1,2 @@
-#include<stdio.h>
-int main()
-{
-
-}
+ // dequeue(arr,&f,&r);
+    // dequeue(arr,&f,&r);
