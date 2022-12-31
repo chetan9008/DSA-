@@ -44,6 +44,7 @@ int main()
     enqueue(arr, &f, &r, 1);
     enqueue(arr, &f, &r, 2);
     enqueue(arr, &f, &r, 3);
+    display(arr);
     enqueue(arr, &f, &r, 4);
     enqueue(arr, &f, &r, 5);
     enqueue(arr, &f, &r, 6);

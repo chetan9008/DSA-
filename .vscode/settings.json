@@ -3,7 +3,8 @@
         "SELECTIONSORT.C": "cpp",
         "stdio.h": "c",
         "LINKLIST(BASIC).C": "cpp",
-        "LINKLIST_BASIC.C": "cpp"
+        "LINKLIST_BASIC.C": "cpp",
+        "StackWITH_LINKLIST.C": "cpp"
     },
     "files.autoSave": "afterDelay"
 }

@@ -1,27 +1,25 @@
-//In this first element and second element compare
-//with each other if first element is greater than 
-//second element than swap it and this happens to 
-//thrid and fourth elements and then swap and this
-//happens till all the elements will not be sorted. 
 #include<stdio.h>
+#define MAX 5
+void display(int *arr)
+{
+    for(int i=0;i<MAX;i++)
+    printf("%d\n",arr[i]);
+}
 int main()
 {
-    int arr[5]={34,11,56,22,65};
     int t;
-    for(int i=0;i<5;i++)
+    int arr[MAX]={22,99,1,2,88};
+    for(int i=0;i<MAX-1;i++)
     {
-        for(int j=i+1;j<5;j++)
+        for(int j=0;j<MAX-i-1;j++)
         {
-            if(arr[i]>arr[j])
+            if(arr[j]>arr[j+1])
             {
-                t=arr[i];
-                arr[i]=arr[j];
-                arr[j]=t;
+                t=arr[j];
+                arr[j]=arr[j+1];
+                arr[j+1]=t;      
             }
         }
     }
-    for(int i=0;i<5;i++)
-    {
-        printf("%d\n",arr[i]);
-    }
+    display(arr);
 }
