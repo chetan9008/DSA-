@@ -1,1 +1,1 @@
-   // arr = (int *)malloc(sizeof(int));
+    // addspec(ptr,4,2);
