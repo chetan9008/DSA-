@@ -56,7 +56,7 @@ void insert(struct bstree **q,int n)
     }
     else
     {
-        if((*q)->data<n)
+        if((*q)->data>n)
         insert(&((*q)->left),n);
         else
         insert(&((*q)->right),n);
@@ -77,7 +77,7 @@ int main()
     inorder(bs);
     printf("\nPOSTORDER TRAVERSAL:\n");
     postorder(bs);
-    printf("\nPOSTORDER TRAVERSAL:\n");
+    printf("\nPREORDER TRAVERSAL:\n");
     preorder(bs);
     int s=5,x;
     if(x=search(bs,s)==1)
