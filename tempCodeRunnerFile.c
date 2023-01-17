@@ -1,1 +1,1 @@
-    // addspec(ptr,4,2);
+    // mul(first, second, &mul1);
