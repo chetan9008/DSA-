@@ -118,7 +118,7 @@ string infixToPrefix(string infix)
 // Driver code
 int main()
 {
-    string s = ("(a+b-d)/(e-f)+g");
+    string s = ("(X+Y)*Y+Z/X");
     cout << infixToPrefix(s) << std::endl;
     return 0;
 }

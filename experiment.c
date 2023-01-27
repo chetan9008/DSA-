@@ -1,21 +1,53 @@
-#include<stdio.h>
-void add(int *p,int *q)
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+struct poly
 {
-    int c;
-//     for(int i=0;i<10;i++)
-// {
-    if(*p==*q)
+    int coff;
+    int expx;
+    int expy;
+    struct poly *link;
+};
+void display(struct poly *q)
+{
+    while (q != NULL)
     {
-        *p=3,*q=4;
-        return;
+        printf("%dx^%dy^%d + ", q->coff, q->expx,q->expy);
+        q = q->link;
     }
-    *p=5,*q=6;
-// }
+    printf("0");
+}
+void polyappend(struct poly **q, int cx, int ex,int ey)
+{
+    struct poly *t;
+    t = (*q);
+    if (*q == NULL)
+    {
+        *q = (struct poly *)malloc(sizeof(struct poly));
+        t = *q;
+    }
+    else
+    {
+        while (t->link != NULL)
+            t = t->link;
+        t->link = (struct poly *)malloc(sizeof(struct poly));
+        t = t->link;
+    }
+    t->coff = cx;
+    t->expx = ex;
+    t->expy = ey;
+    t->link = NULL;
 }
 int main()
 {
-    int p,q;
-    p=2,q=2;
-    add(&p,&q);
-    printf("value of p and q is %d and %d",p,q);
+    struct poly *first;
+    first=NULL;
+    polyappend(&first, 9, 3,2 );
+    polyappend(&first, 8, 2,1  );
+    polyappend(&first, 3, 1,1  );
+    polyappend(&first, 12, 1,0  );
+    polyappend(&first, 17, 0,0  );
+    system("cls");
+    printf("First Polynomial is:\n\n");
+    display(first);
 }
