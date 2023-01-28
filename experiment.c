@@ -1,53 +1,79 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <windows.h>
-struct poly
+struct node
 {
-    int coff;
-    int expx;
-    int expy;
-    struct poly *link;
+    int data;
+    struct node *link;
 };
-void display(struct poly *q)
+void delete(struct node **f, struct node **r)
 {
-    while (q != NULL)
+    if(*f==NULL)
     {
-        printf("%dx^%dy^%d + ", q->coff, q->expx,q->expy);
-        q = q->link;
+        printf("Underflow\n");
     }
-    printf("0");
-}
-void polyappend(struct poly **q, int cx, int ex,int ey)
-{
-    struct poly *t;
-    t = (*q);
-    if (*q == NULL)
+    struct node *temp;
+    if (*f == *r)
     {
-        *q = (struct poly *)malloc(sizeof(struct poly));
-        t = *q;
+        temp = *f;
+        *f = NULL;
+        *r = NULL;
+        free(temp);
     }
     else
     {
-        while (t->link != NULL)
-            t = t->link;
-        t->link = (struct poly *)malloc(sizeof(struct poly));
-        t = t->link;
+        temp = *f;
+        *f = (*f)->link;
+        (*r)->link = temp->link;
+        free(temp);
     }
-    t->coff = cx;
-    t->expx = ex;
-    t->expy = ey;
-    t->link = NULL;
+}
+void display(struct node *f, struct node *r)
+{
+    if(f==NULL)
+    printf("List is empty\n");
+    struct node *q, *p;
+    q = f, p = NULL;
+    while (q != p)
+    {
+        printf("%d   ", q->data);
+        q = q->link;
+        p = f;
+    }
+    printf("\n");
+}
+void insert(struct node **f, struct node **r, int n)
+{
+    struct node *temp;
+    if (((*f) == NULL) && ((*r) == NULL))
+    {
+        temp = (struct node *)malloc(sizeof(struct node));
+        temp->data = n;
+        temp->link = NULL;
+        *f = *r = temp;
+    }
+    else
+    {
+        temp = (struct node *)malloc(sizeof(struct node));
+        temp->data = n;
+        temp->link = *f;
+        (*r)->link = temp;
+        (*r) = temp;
+    }
 }
 int main()
 {
-    struct poly *first;
-    first=NULL;
-    polyappend(&first, 9, 3,2 );
-    polyappend(&first, 8, 2,1  );
-    polyappend(&first, 3, 1,1  );
-    polyappend(&first, 12, 1,0  );
-    polyappend(&first, 17, 0,0  );
-    system("cls");
-    printf("First Polynomial is:\n\n");
-    display(first);
+    struct node *front, *rear;
+    front = rear = NULL;
+    insert(&front, &rear, 1);
+    insert(&front, &rear, 2);
+    insert(&front, &rear, 3);
+    insert(&front, &rear, 4);
+    display(front,rear);
+    delete(&front,&rear);
+    delete(&front,&rear);
+    delete(&front,&rear);
+    delete(&front,&rear);
+    display(front,rear);
+    delete(&front,&rear);
+    return 0;
 }
