@@ -13,9 +13,9 @@ int search(struct bstree *q,int s)
         if(q->data==s)
         return 1;
         if(q->data<s)
-        search(q->left,s);
-        else
         search(q->right,s);
+        else
+        search(q->left,s);
     }
 }
 void postorder(struct bstree *q)

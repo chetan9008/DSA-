@@ -12,7 +12,7 @@ int split(int *arr,int low,int upper)
         p++;
         while(i<arr[q])
         q--;
-        printf("\nvalue of q is %d\n",q);
+        // printf("\nvalue of q is %d\n",q);
         if(q>p)
         {
             t=arr[p];
